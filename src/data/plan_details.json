@@ -1,0 +1,290 @@
+[
+  {
+    "Plan": "AmeriHealth Platinum",
+    "Service": "Visit to physician to treat an injury or illness",
+    "In_Network_Cost": "$10/Visit",
+    "Out_of_Network_Coverage": "Not covered",
+    "Prior_Authorization_Required": "No",
+    "Other_Notes": "None"
+  },
+  {
+    "Plan": "AmeriHealth Platinum",
+    "Service": "Diagnostic test (x-ray)",
+    "In_Network_Cost": "$30/Visit",
+    "Out_of_Network_Coverage": "Not covered",
+    "Prior_Authorization_Required": "No",
+    "Other_Notes": "None"
+  },
+  {
+    "Plan": "AmeriHealth Platinum",
+    "Service": "Diagnostic test (blood work)",
+    "In_Network_Cost": "No charge",
+    "Out_of_Network_Coverage": "Not covered",
+    "Prior_Authorization_Required": "No",
+    "Other_Notes": "None"
+  },
+  {
+    "Plan": "AmeriHealth Platinum",
+    "Service": "Imaging (CT/PET scans)",
+    "In_Network_Cost": "$60/Scan",
+    "Out_of_Network_Coverage": "Not covered",
+    "Prior_Authorization_Required": "Yes",
+    "Other_Notes": "None"
+  },
+  {
+    "Plan": "AmeriHealth Platinum",
+    "Service": "Imaging (MRIs)",
+    "In_Network_Cost": "$60/Scan",
+    "Out_of_Network_Coverage": "Not covered",
+    "Prior_Authorization_Required": "Yes",
+    "Other_Notes": "None"
+  },
+  {
+    "Plan": "AmeriHealth Platinum",
+    "Service": "Generic Drugs (Retail/Mail Order, 1-30 days)",
+    "In_Network_Cost": "$15/Fill",
+    "Out_of_Network_Coverage": "Not covered",
+    "Prior_Authorization_Required": "Yes",
+    "Other_Notes": "Prior authorization may be required on some drugs."
+  },
+  {
+    "Plan": "AmeriHealth Platinum",
+    "Service": "Generic Drugs (Mail Order, 31-90 days)",
+    "In_Network_Cost": "$30/Fill",
+    "Out_of_Network_Coverage": "Not covered",
+    "Prior_Authorization_Required": "Yes",
+    "Other_Notes": "Covers up to a 30-day supply."
+  },
+  {
+    "Plan": "AmeriHealth Platinum",
+    "Service": "Outpatient Surgery",
+    "In_Network_Cost": "No charge",
+    "Out_of_Network_Coverage": "Not covered",
+    "Prior_Authorization_Required": "Yes",
+    "Other_Notes": "Prior authorization is required for certain services."
+  },
+  {
+    "Plan": "AmeriHealth Platinum",
+    "Service": "Emergency room care",
+    "In_Network_Cost": "$100/Visit",
+    "Out_of_Network_Coverage": "Not covered",
+    "Prior_Authorization_Required": "No",
+    "Other_Notes": "None"
+  },
+  {
+    "Plan": "AmeriHealth Platinum",
+    "Service": "Pregnancy/Childbirth services",
+    "In_Network_Cost": "No charge",
+    "Out_of_Network_Coverage": "Not covered",
+    "Prior_Authorization_Required": "No",
+    "Other_Notes": "Cost sharing does not apply for preventive services."
+  },
+  {
+    "Plan": "AmeriHealth Platinum",
+    "Service": "Pregnancy/Childbirth services",
+    "In_Network_Cost": "No charge",
+    "Out_of_Network_Coverage": "Not covered",
+    "Prior_Authorization_Required": "No",
+    "Other_Notes": "Maternity care may include tests and services described elsewhere in the SBC (e.g., ultrasound)."
+  },
+  {
+    "Plan": "AmeriHealth Platinum",
+    "Service": "Durable medical equipment",
+    "In_Network_Cost": "50% coinsurance",
+    "Out_of_Network_Coverage": "Not covered",
+    "Prior_Authorization_Required": "Yes",
+    "Other_Notes": "Prior authorization is required for selected items."
+  },
+  {
+    "Plan": "AmeriHealth Gold",
+    "Service": "Visit to physician to treat an injury or illness",
+    "In_Network_Cost": "$15/Visit",
+    "Out_of_Network_Coverage": "Not covered",
+    "Prior_Authorization_Required": "No",
+    "Other_Notes": "None"
+  },
+  {
+    "Plan": "AmeriHealth Gold",
+    "Service": "Diagnostic test (x-ray)",
+    "In_Network_Cost": "$60/Visit",
+    "Out_of_Network_Coverage": "Not covered",
+    "Prior_Authorization_Required": "No",
+    "Other_Notes": "None"
+  },
+  {
+    "Plan": "AmeriHealth Gold",
+    "Service": "Diagnostic test (blood work)",
+    "In_Network_Cost": "No charge",
+    "Out_of_Network_Coverage": "Not covered",
+    "Prior_Authorization_Required": "No",
+    "Other_Notes": "None"
+  },
+  {
+    "Plan": "AmeriHealth Gold",
+    "Service": "Imaging (CT/PET scans)",
+    "In_Network_Cost": "50% coinsurance",
+    "Out_of_Network_Coverage": "Not covered",
+    "Prior_Authorization_Required": "Yes",
+    "Other_Notes": "None"
+  },
+  {
+    "Plan": "AmeriHealth Gold",
+    "Service": "Imaging (MRIs)",
+    "In_Network_Cost": "50% coinsurance",
+    "Out_of_Network_Coverage": "Not covered",
+    "Prior_Authorization_Required": "Yes",
+    "Other_Notes": "None"
+  },
+  {
+    "Plan": "AmeriHealth Gold",
+    "Service": "Generic Drugs (Retail/Mail Order, 1-30 days)",
+    "In_Network_Cost": "$10/Fill",
+    "Out_of_Network_Coverage": "Not covered",
+    "Prior_Authorization_Required": "Yes",
+    "Other_Notes": "Prior authorization may be required on some drugs."
+  },
+  {
+    "Plan": "AmeriHealth Gold",
+    "Service": "Generic Drugs (Mail Order, 31-90 days)",
+    "In_Network_Cost": "$20/Fill",
+    "Out_of_Network_Coverage": "Not covered",
+    "Prior_Authorization_Required": "Yes",
+    "Other_Notes": "Covers up to a 30-day supply."
+  },
+  {
+    "Plan": "AmeriHealth Gold",
+    "Service": "Outpatient Surgery",
+    "In_Network_Cost": "20% coinsurance",
+    "Out_of_Network_Coverage": "Not covered",
+    "Prior_Authorization_Required": "Yes",
+    "Other_Notes": "Prior authorization is required for certain services."
+  },
+  {
+    "Plan": "AmeriHealth Gold",
+    "Service": "Emergency room care",
+    "In_Network_Cost": "20% coinsurance",
+    "Out_of_Network_Coverage": "Not covered",
+    "Prior_Authorization_Required": "No",
+    "Other_Notes": "None"
+  },
+  {
+    "Plan": "AmeriHealth Gold",
+    "Service": "Pregnancy/Childbirth services",
+    "In_Network_Cost": "20% coinsurance",
+    "Out_of_Network_Coverage": "Not covered",
+    "Prior_Authorization_Required": "No",
+    "Other_Notes": "Cost sharing does not apply for preventive services."
+  },
+  {
+    "Plan": "AmeriHealth Gold",
+    "Service": "Pregnancy/Childbirth services",
+    "In_Network_Cost": "20% coinsurance",
+    "Out_of_Network_Coverage": "Not covered",
+    "Prior_Authorization_Required": "No",
+    "Other_Notes": "Maternity care may include tests and services described elsewhere in the SBC (e.g., ultrasound)."
+  },
+  {
+    "Plan": "AmeriHealth Gold",
+    "Service": "Durable medical equipment",
+    "In_Network_Cost": "50% coinsurance",
+    "Out_of_Network_Coverage": "Not covered",
+    "Prior_Authorization_Required": "Yes",
+    "Other_Notes": "Prior authorization is required for selected items."
+  },
+  {
+    "Plan": "AmeriHealth Silver",
+    "Service": "Visit to physician to treat an injury or illness",
+    "In_Network_Cost": "$30/Visit",
+    "Out_of_Network_Coverage": "Not covered",
+    "Prior_Authorization_Required": "No",
+    "Other_Notes": "None"
+  },
+  {
+    "Plan": "AmeriHealth Silver",
+    "Service": "Diagnostic test (x-ray)",
+    "In_Network_Cost": "50% coinsurance",
+    "Out_of_Network_Coverage": "Not covered",
+    "Prior_Authorization_Required": "No",
+    "Other_Notes": "None"
+  },
+  {
+    "Plan": "AmeriHealth Silver",
+    "Service": "Diagnostic test (blood work)",
+    "In_Network_Cost": "No charge",
+    "Out_of_Network_Coverage": "Not covered",
+    "Prior_Authorization_Required": "No",
+    "Other_Notes": "None"
+  },
+  {
+    "Plan": "AmeriHealth Silver",
+    "Service": "Imaging (CT/PET scans)",
+    "In_Network_Cost": "50% coinsurance",
+    "Out_of_Network_Coverage": "Not covered",
+    "Prior_Authorization_Required": "Yes",
+    "Other_Notes": "None"
+  },
+  {
+    "Plan": "AmeriHealth Silver",
+    "Service": "Imaging (MRIs)",
+    "In_Network_Cost": "50% coinsurance",
+    "Out_of_Network_Coverage": "Not covered",
+    "Prior_Authorization_Required": "Yes",
+    "Other_Notes": "None"
+  },
+  {
+    "Plan": "AmeriHealth Silver",
+    "Service": "Generic Drugs (Retail/Mail Order, 1-30 days)",
+    "In_Network_Cost": "$20/Fill",
+    "Out_of_Network_Coverage": "Not covered",
+    "Prior_Authorization_Required": "Yes",
+    "Other_Notes": "Prior authorization may be required on some drugs."
+  },
+  {
+    "Plan": "AmeriHealth Silver",
+    "Service": "Generic Drugs (Mail Order, 31-90 days)",
+    "In_Network_Cost": "$40/Fill",
+    "Out_of_Network_Coverage": "Not covered",
+    "Prior_Authorization_Required": "Yes",
+    "Other_Notes": "Covers up to a 30-day supply."
+  },
+  {
+    "Plan": "AmeriHealth Silver",
+    "Service": "Outpatient Surgery",
+    "In_Network_Cost": "20% coinsurance",
+    "Out_of_Network_Coverage": "Not covered",
+    "Prior_Authorization_Required": "Yes",
+    "Other_Notes": "Prior authorization is required for certain services."
+  },
+  {
+    "Plan": "AmeriHealth Silver",
+    "Service": "Emergency room care",
+    "In_Network_Cost": "20% coinsurance",
+    "Out_of_Network_Coverage": "50% coinsurance",
+    "Prior_Authorization_Required": "No",
+    "Other_Notes": "None"
+  },
+  {
+    "Plan": "AmeriHealth Silver",
+    "Service": "Pregnancy/Childbirth services",
+    "In_Network_Cost": "20% coinsurance",
+    "Out_of_Network_Coverage": "Not covered",
+    "Prior_Authorization_Required": "No",
+    "Other_Notes": "Cost sharing does not apply for preventive services."
+  },
+  {
+    "Plan": "AmeriHealth Silver",
+    "Service": "Pregnancy/Childbirth services",
+    "In_Network_Cost": "20% coinsurance",
+    "Out_of_Network_Coverage": "Not covered",
+    "Prior_Authorization_Required": "No",
+    "Other_Notes": "Maternity care may include tests and services described elsewhere in the SBC (e.g., ultrasound)."
+  },
+  {
+    "Plan": "AmeriHealth Silver",
+    "Service": "Durable medical equipment",
+    "In_Network_Cost": "50% coinsurance",
+    "Out_of_Network_Coverage": "Not covered",
+    "Prior_Authorization_Required": "Yes",
+    "Other_Notes": "Prior authorization is required for selected items."
+  }
+]

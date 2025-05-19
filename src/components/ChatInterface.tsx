@@ -1,8 +1,8 @@
 "use client";
 import React, { useState, useRef, useEffect } from 'react';
 import { Send, UserCircle, BotIcon as Bot, X, MessageCircle } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
+import { Button } from '../components/ui/button';
+import { Card } from '../components/ui/card';
 import { Input } from '@/components/ui/Input';
 import type { Message as ChatAppMessage } from '@/lib/types'; // Import your main Message type from lib/types.ts
 
@@ -168,7 +168,7 @@ const ChatInterface: React.FC<{ onClose?: () => void, isVisible?: boolean }> = (
         setMessages([
             {
                 id: `bot-initial-1-${Date.now()}`, type: 'bot',
-                content: "Hello! I'm your Aptia enrollment assistant. How can I help you today?",
+                content: "Hello! I'm your Doubt assistant. How can I help you today?",
                 timestamp: new Date().toISOString() // Timestamps are crucial for ordering and display
             },
         ]);
@@ -350,7 +350,7 @@ const ChatInterface: React.FC<{ onClose?: () => void, isVisible?: boolean }> = (
                 <div className="flex items-center">
                     <MessageCircle className="h-6 w-6 mr-2 text-teal-600" /> {/* Aptia teal icon */}
                     <div>
-                        <h1 className="text-sm font-semibold text-slate-700">Aptia Support</h1>
+                        <h1 className="text-sm font-semibold text-slate-700">Doubt Support</h1>
                         <p className="text-xs text-teal-600">Online</p> {/* Status indicator */}
                     </div>
                 </div>

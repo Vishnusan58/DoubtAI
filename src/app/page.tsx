@@ -1,28 +1,16 @@
-// For App Router: app/aptia-hero/page.tsx
-// For Pages Router: pages/aptia-hero.tsx
-"use client"; // Required for App Router if using client-side hooks like useState, useEffect
+"use client";
 
 import React, { useState, useEffect } from 'react';
-import Head from 'next/head'; // For Pages Router, or use Metadata API for App Router
-import Image from 'next/image'; // For optimized images
-import ChatInterface from '@/components/ChatInterface'; // Adjust path if needed
-import { MessageSquare } from 'lucide-react'; // For the chat toggle button icon
+import Head from 'next/head';
+import Image from 'next/image';
+import ChatInterface from '../components/ChatInterface';
+import { MessageSquare } from 'lucide-react';
 
+// const Logo = () => (
+//     <Image src="/src/components/ui/log.png" alt="RAG Bot Logo" width={100} height={100} />
+// );
 
-
-const AptiaLogo = () => (
-    <Image src="/images/logo1.png" alt="Aptia Logo" width={100} height={100} />
-);
-
-
-
-
-// For App Router, you might define metadata like this:
-// export const metadata = {
-//   title: 'Aptia - Administration Partner',
-// };
-
-export default function AptiaHeroPage() {
+export default function RagBotPage() {
     const [currentYear, setCurrentYear] = useState('');
     const [isChatVisible, setIsChatVisible] = useState(false);
 
@@ -34,13 +22,10 @@ export default function AptiaHeroPage() {
         setIsChatVisible(!isChatVisible);
     };
 
-    // Define styles that were in the <style> tag.
-    // For better organization, these could be in globals.css or a separate CSS module.
     const bodyStyle: React.CSSProperties = {
         fontFamily: "'Inter', sans-serif",
-        backgroundColor: '#0A2540', // Aptia Dark Blue/Charcoal
+        backgroundColor: '#1a1a2e', // Dark blue background
         color: 'white',
-        // overflowX: 'hidden', // Apply this on a higher level if needed, or ensure no content overflows
     };
 
     const heroBgShapeStyle: React.CSSProperties = {
@@ -49,12 +34,12 @@ export default function AptiaHeroPage() {
         right: 0,
         width: '50%',
         height: '100%',
-        backgroundColor: '#00DDAA', // Aptia Green
+        backgroundColor: '#4361ee', // Accent color
         clipPath: 'ellipse(80% 100% at 100% 70%)',
         zIndex: 0,
     };
 
-    const heroPersonImgStyle: React.CSSProperties = {
+    const heroImageStyle: React.CSSProperties = {
         position: 'absolute',
         bottom: 0,
         right: '5%',
@@ -66,35 +51,30 @@ export default function AptiaHeroPage() {
         zIndex: 1,
     };
 
-
     return (
         <>
-            {/* For Pages Router, Head component is used for title and meta tags */}
-            {/* For App Router, this is handled by layout.tsx and metadata object */}
             <Head>
-                <title>Aptia - Administration Partner</title>
-                <meta name="description" content="Aptia - Your specialist tech-enabled administration partner." />
-                <link rel="icon" href="/favicon.ico" /> {/* Make sure you have a favicon */}
+                <title>RAG Bot - Knowledge Assistant</title>
+                <meta name="description" content="RAG Bot - Your customizable knowledge assistant powered by vector database retrieval." />
+                <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            {/* Apply body styles to a wrapper div if not using globals.css for this */}
             <div style={bodyStyle} className="min-h-screen flex flex-col relative overflow-hidden">
                 <header className="absolute top-0 left-0 right-0 z-20 py-4">
                     <div className="container mx-auto px-6 flex justify-between items-center">
                         <div className="text-2xl font-bold">
-                            <AptiaLogo />
+                            {/*<Logo />*/}
                         </div>
                         <nav className="hidden md:flex items-center">
-                            <a href="#" className="px-3 py-2 text-sm font-medium text-white hover:text-teal-300 transition-colors">About</a>
-                            <a href="#" className="px-3 py-2 text-sm font-medium text-white hover:text-teal-300 transition-colors">Solutions</a>
-                            <a href="#" className="px-3 py-2 text-sm font-medium text-white hover:text-teal-300 transition-colors">Careers</a>
-                            <a href="#" className="px-3 py-2 text-sm font-medium text-white hover:text-teal-300 transition-colors">Contact</a>
-                            <a href="#" className="px-3 py-2 text-sm font-medium text-white hover:text-teal-300 transition-colors">Insights</a>
-                            <a href="#" className="px-3 py-2 text-sm font-medium text-white hover:text-teal-300 transition-colors">Press</a>
+                            <a href="#" className="px-3 py-2 text-sm font-medium text-white hover:text-blue-300 transition-colors">Features</a>
+                            <a href="#" className="px-3 py-2 text-sm font-medium text-white hover:text-blue-300 transition-colors">Documentation</a>
+                            <a href="#" className="px-3 py-2 text-sm font-medium text-white hover:text-blue-300 transition-colors">Integrations</a>
+                            <a href="#" className="px-3 py-2 text-sm font-medium text-white hover:text-blue-300 transition-colors">Contact</a>
                         </nav>
-                        <div className="flex items-center space-x-2">
-                            <button className="px-3 py-1 text-sm font-semibold border-2 rounded-md transition-colors bg-teal-500 text-slate-900 border-transparent">UK</button>
-                            <button className="px-3 py-1 text-sm font-semibold border-2 rounded-md transition-colors border-white text-white hover:bg-white hover:text-slate-900">US</button>
+                        <div className="flex items-center">
+                            <button className="px-4 py-2 text-sm font-semibold rounded-md transition-colors bg-blue-500 text-white hover:bg-blue-600">
+                                Get Started
+                            </button>
                         </div>
                     </div>
                 </header>
@@ -103,50 +83,48 @@ export default function AptiaHeroPage() {
                     <div className="container mx-auto px-6 relative z-10">
                         <div className="max-w-xl lg:max-w-2xl">
                             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4">
-                                Administration is a <br className="hidden md:inline" />genuine passion <br className="hidden md:inline" />for us.
+                                Retrieve and <br className="hidden md:inline" />Generate with <br className="hidden md:inline" />Precision.
                             </h1>
-                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-teal-400 mb-6"> {/* Aptia Green Text */}
-                                No one does more.
+                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-blue-400 mb-6">
+                                Knowledge at your fingertips.
                             </h2>
                             <p className="text-base md:text-lg leading-relaxed mb-8 max-w-md lg:max-w-lg text-slate-200">
-                                We are Aptia, your specialist tech-enabled administration partner.
-                                In the highly complex and underserved space of pensions and benefits, we strive to make things simple and easy. Our sole focus is administration – and we do it with genuine passion responding to your and your members’ needs. With our experienced team, backed by insight and unmatched technical expertise.
+                                Our RAG Bot combines the power of retrieval-augmented generation with your custom knowledge base.
+                                Simply swap in your vector database and transform how your users interact with your content.
+                                Built for developers, designed for end-users, and optimized for accuracy.
                             </p>
                             <button
                                 id="openChatBtn"
                                 onClick={toggleChatVisibility}
-                                className="bg-teal-500 text-slate-900 font-semibold px-8 py-3 rounded-md hover:bg-teal-400 transition-colors text-lg"
+                                className="bg-blue-500 text-white font-semibold px-8 py-3 rounded-md hover:bg-blue-400 transition-colors text-lg flex items-center"
                             >
-                                Chat with Aptia Assistant
+                                <MessageSquare className="mr-2" size={20} />
+                                Try RAG Bot Now
                             </button>
                         </div>
                     </div>
 
                     <div style={heroBgShapeStyle}></div>
-                    {/* Use Next.js Image component for optimization */}
-                    {/* Make sure to place hero-person.png in public/images/ */}
                     <Image
-                        src="/images/hero-person.png" // Path relative to the 'public' folder
-                        alt="Person"
-                        width={400} // Provide appropriate width
-                        height={450} // Provide appropriate height
-                        style={heroPersonImgStyle}
-                        onError={(e) => (e.currentTarget.style.display = 'none')} // Hide if image fails to load
+                        src="/public/images/file.svg"
+                        alt="RAG Bot Illustration"
+                        width={400}
+                        height={450}
+                        style={heroImageStyle}
+                        onError={(e) => ((e.currentTarget as HTMLImageElement).style.display = 'none')}
                     />
                 </main>
 
                 <footer className="py-6 text-center text-sm text-slate-400 z-10 relative">
-                    <p>&copy; {currentYear} Aptia. All rights reserved.</p>
+                    <p>&copy; {currentYear} RAG Bot. All rights reserved.</p>
                     <p className="mt-1">
-                        <a href="#" className="hover:text-teal-300">Privacy Policy</a> |
-                        <a href="#" className="hover:text-teal-300">Terms of Service</a>
+                        <a href="#" className="hover:text-blue-300 mx-2">Privacy Policy</a>
+                        <a href="#" className="hover:text-blue-300 mx-2">Terms of Service</a>
+                        <a href="#" className="hover:text-blue-300 mx-2">Documentation</a>
                     </p>
                 </footer>
             </div>
 
-            {/* Chat Widget Integration */}
-            {/* The ChatInterface component is already designed to be fixed and float */}
-            {/* We just control its rendering with the isChatVisible state */}
             <ChatInterface
                 isVisible={isChatVisible}
                 onClose={toggleChatVisibility}

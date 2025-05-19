@@ -1,8 +1,8 @@
 // src/app/layout.tsx\
 import "@/styles/globals.css"
 export const metadata = {
-    title: "Aptia Answers",
-    description: "A simple Next.js app",
+    title: "Doubt Q",
+    description: "A Simply and quickly adpotable RAG and LLM powered AI chat application ",
 };
 
 export default function RootLayout({

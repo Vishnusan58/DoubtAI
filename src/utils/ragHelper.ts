@@ -5,7 +5,7 @@ import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold, GenerationConfig,
 // Make sure this path is correct relative to your ragHelper.ts file.
 // If ragHelper.ts is in src/utils/ and plan_details.json is in src/data/,
 // the path would be '../data/plan_details.json'
-import planServicesData from 'data/plan_details.json';
+import planServicesData from '@/data/plan_details.json';
 
 interface ChatMessageForHistory {
     type: 'user' | 'bot' | 'ai_response' | 'system' | 'function';

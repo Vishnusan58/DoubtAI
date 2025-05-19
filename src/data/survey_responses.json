@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "coverage_amount": 523.00,
+    "hospital_network": "mayo",
+    "family_size": "self",
+    "additional_services": ["maternity"],
+    "primary_healthcare": "regular_visits",
+    "diagnostic_tests": "yes",
+    "prescription_drugs": "no",
+    "emergency_visits": "rarely",
+    "pregnancy_planning": "no",
+    "wellness_benefits": "yes",
+    "created_at": "2025-01-28 13:04:39"
+  },
+  {
+    "id": 2,
+    "coverage_amount": 523.00,
+    "hospital_network": "mayo",
+    "family_size": "self",
+    "additional_services": ["maternity"],
+    "primary_healthcare": "regular_visits",
+    "diagnostic_tests": "yes",
+    "prescription_drugs": "no",
+    "emergency_visits": "rarely",
+    "pregnancy_planning": "no",
+    "wellness_benefits": "yes",
+    "created_at": "2025-01-28 13:04:43"
+  },
+  {
+    "id": 3,
+    "coverage_amount": 78978.00,
+    "hospital_network": "cleveland",
+    "family_size": "self",
+    "additional_services": ["maternity"],
+    "primary_healthcare": "regular_visits",
+    "diagnostic_tests": "yes",
+    "prescription_drugs": "no",
+    "emergency_visits": "occasionally",
+    "pregnancy_planning": "no",
+    "wellness_benefits": "yes",
+    "created_at": "2025-01-28 13:08:11"
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "UserID": 101,
+    "Name": "Alex",
+    "Age": 35,
+    "MaritalStatus": "Married",
+    "NumberOfDependents": 3,
+    "ClaimHistory": "Health & Dental",
+    "LastClaimDate": "2024-05-15",
+    "TotalClaimsLastYear": 2
+  },
+  {
+    "UserID": 102,
+    "Name": "Jordan",
+    "Age": 42,
+    "MaritalStatus": "Single",
+    "NumberOfDependents": 0,
+    "ClaimHistory": "Car Insurance",
+    "LastClaimDate": "2024-08-07",
+    "TotalClaimsLastYear": 1
+  },
+  {
+    "UserID": 103,
+    "Name": "Priya",
+    "Age": 29,
+    "MaritalStatus": "Married",
+    "NumberOfDependents": 1,
+    "ClaimHistory": "Health",
+    "LastClaimDate": "2024-09-18",
+    "TotalClaimsLastYear": 3
+  },
+  {
+    "UserID": 104,
+    "Name": "Lee",
+    "Age": 50,
+    "MaritalStatus": "Divorced",
+    "NumberOfDependents": 2,
+    "ClaimHistory": "Home Insurance",
+    "LastClaimDate": "2024-03-22",
+    "TotalClaimsLastYear": 1
+  },
+  {
+    "UserID": 105,
+    "Name": "Maria",
+    "Age": 38,
+    "MaritalStatus": "Married",
+    "NumberOfDependents": 2,
+    "ClaimHistory": "Travel & Health",
+    "LastClaimDate": "2024-06-11",
+    "TotalClaimsLastYear": 4
+  }
+]
