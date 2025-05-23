@@ -57,8 +57,8 @@ export class PdfEmbeddingService {
       const textChunks = this.splitTextIntoChunks(documentText, chunkSize);
       console.log(`[${new Date().toISOString()}] Document split into ${textChunks.length} chunks`);
 
-      // Get Pinecone index
-      const index = this.pinecone.Index('myvectordbb'); // Using your index name from the Python script
+      // Get Pinecone index - using the same index name as in processor.ts
+      const index = this.pinecone.Index('realestate-us-sample-index');
 
       // Process and store each chunk
       const vectors = await Promise.all(

@@ -5,7 +5,7 @@ import * as genai from '@google/generative-ai'; // Using namespace import
 
 const CURRENT_USER = 'Vishnusan58'; // Hardcoded
 const API_KEY = 'AIzaSyDr6KjoDsPwQiAdDN-8CdzTTbIk8rIIZRg'; // Hardcoded API Key - MAJOR SECURITY RISK
-const MODEL_NAME = 'gemini-embedding-exp-03-07'; // This model name might be outdated or an experimental one.
+const MODEL_NAME = 'text-embedding-004'; // This model name might be outdated or an experimental one.
 // Official models are like 'embedding-001' or 'text-embedding-004'.
 // Verify the correct model name.
 

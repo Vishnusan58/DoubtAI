@@ -3,7 +3,7 @@ import * as genai from '@google/generative-ai';
 // Constants for configuration
 const CURRENT_USER = 'Vishnusan58';
 const API_KEY = 'AIzaSyDr6KjoDsPwQiAdDN-8CdzTTbIk8rIIZRg';
-const MODEL_NAME = 'gemini-embedding-exp-03-07';
+const MODEL_NAME = 'text-embedding-004';
 const MAX_CHUNK_SIZE = 30000; // Maximum size for each text chunk (below the 36000 byte limit)
 
 export class GeminiEmbeddingService {

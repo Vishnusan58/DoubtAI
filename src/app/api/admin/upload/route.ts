@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { AzureStorageService } from '@/services/storage/azure-storage';
+import { AzureStorageService } from '@/services/storage/azure-storage-fixed';
 import { DocumentProcessor } from '@/services/document/document-processor';
 import { PineconeService } from '@/services/pinecone';
 import { PdfEmbeddingService } from '@/services/document/pdf-embedding-service';
