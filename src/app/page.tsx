@@ -106,10 +106,10 @@ export default function RagBotPage() {
 
                     <div style={heroBgShapeStyle}></div>
                     <Image
-                        src="/public/images/file.svg"
+                        src="/images/Woman in shape.png"
                         alt="RAG Bot Illustration"
-                        width={400}
-                        height={450}
+                        width={700}
+                        height={800}
                         style={heroImageStyle}
                         onError={(e) => ((e.currentTarget as HTMLImageElement).style.display = 'none')}
                     />
