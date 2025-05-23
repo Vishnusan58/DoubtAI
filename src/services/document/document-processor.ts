@@ -1,6 +1,7 @@
-import { GeminiEmbeddingService } from '../embeddings/gemini-embeddings';
+import { GeminiEmbeddingService } from '@/services/embeddings/gemini-embeddings';
+import { normalizeL2 } from '@/utils/vector-utils';
 
-const CURRENT_TIMESTAMP = '2025-05-17 06:31:35';
+const CURRENT_TIMESTAMP = new Date().toISOString();
 const CURRENT_USER = 'Vishnusan58';
 
 interface DocumentMetadata {
@@ -52,7 +53,9 @@ export class DocumentProcessor {
             console.log(`[${CURRENT_TIMESTAMP}] Processing document: ${metadata.title}`);
 
             // Generate document-level embedding
-            const documentEmbedding = await this.embedder.generateEmbedding(content);
+            const rawDocumentEmbedding = await this.embedder.generateEmbedding(content);
+            // Apply L2 normalization to match Python script behavior
+            const documentEmbedding = normalizeL2(rawDocumentEmbedding);
 
             // Split content into chunks (simple paragraph-based splitting for now)
             const chunks = this.splitIntoChunks(content);
@@ -60,7 +63,10 @@ export class DocumentProcessor {
             // Process each chunk
             const processedChunks = await Promise.all(
                 chunks.map(async (chunk, index) => {
-                    const embedding = await this.embedder.generateEmbedding(chunk.content);
+                    const rawEmbedding = await this.embedder.generateEmbedding(chunk.content);
+                    // Apply L2 normalization to match Python script behavior
+                    const embedding = normalizeL2(rawEmbedding);
+
                     return {
                         id: `${metadata.title}-chunk-${index}`,
                         content: chunk.content,
@@ -77,8 +83,8 @@ export class DocumentProcessor {
                 embedding: documentEmbedding,
                 metadata: {
                     ...metadata,
-                    createdAt: CURRENT_TIMESTAMP,
-                    createdBy: CURRENT_USER
+                    createdAt: metadata.createdAt || CURRENT_TIMESTAMP,
+                    createdBy: metadata.createdBy || CURRENT_USER
                 },
                 chunks: processedChunks
             };

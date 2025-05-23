@@ -15,7 +15,7 @@ export class GeminiEmbeddingService {
 
     private constructor() {
         // It's safer to get the API key from environment variables
-        const apiKey = process.env.GEMINI_API_KEY || API_KEY; // Fallback, but ideally only from env
+        const apiKey = process.env.GEMINI_API_KEY; // Fallback, but ideally only from env
         if (!apiKey || apiKey === 'AIzaSyDr6KjoDsPwQiAdDN-8CdzTTbIk8rIIZRg') { // Check against your hardcoded default
             console.error("GEMINI_API_KEY is not configured or is using a placeholder. Please set it in your environment variables.");
             // Optionally throw an error here if the API key is critical for instantiation

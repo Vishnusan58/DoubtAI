@@ -7,7 +7,7 @@ export class RAGEngine {
     private pinecone: PineconeService;
 
     constructor() {
-        this.gemini = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
+        this.gemini = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY!);
         this.pinecone = new PineconeService();
     }
 

@@ -34,5 +34,11 @@ export const azureConfig = {
             embeddings: 'embeddings',
             versions: 'versions'
         }
+    },
+    search: {
+        endpoint: process.env.AZURE_SEARCH_ENDPOINT || 'https://doubtai-search.search.windows.net',
+        apiKey: process.env.AZURE_SEARCH_API_KEY || '',
+        indexName: process.env.AZURE_SEARCH_INDEX_NAME || 'documents-index'
     }
 };
+

@@ -176,6 +176,22 @@ export class AzureStorageService {
         }
     }
 
+    async listDocuments(): Promise<StorageMetadata[]> {
+        try {
+            const documents = await this.documentsCollection
+                .find({})
+                .sort({ createdAt: -1 })
+                .limit(20)
+                .toArray();
+
+            console.log(`[${new Date().toISOString()}] Retrieved ${documents.length} documents`);
+            return documents;
+        } catch (error) {
+            console.error(`[${new Date().toISOString()}] Failed to list documents:`, error);
+            throw error;
+        }
+    }
+
     async cleanup(): Promise<void> {
         try {
             await this.mongoClient.close();
@@ -186,3 +202,4 @@ export class AzureStorageService {
         }
     }
 }
+

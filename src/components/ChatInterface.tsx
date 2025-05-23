@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, UserCircle, BotIcon as Bot, X, MessageCircle } from 'lucide-react';
+import { Send, UserCircle, BotIcon as Bot, X, MessageCircle, FileText } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card } from '../components/ui/card';
 import { Input } from '@/components/ui/Input';
@@ -160,6 +160,7 @@ const ChatInterface: React.FC<{ onClose?: () => void, isVisible?: boolean }> = (
     const [isCurrentPlanMode, setIsCurrentPlanMode] = useState(false); // Tracks if conversation is about current plan
     const [awaitingLifeEvent, setAwaitingLifeEvent] = useState(false); // Tracks if bot is waiting for life event info
     const [planRecommendationShown, setPlanRecommendationShown] = useState(false); // Tracks if recommendations were shown
+    const [isDocumentMode, setIsDocumentMode] = useState(false); // Track if conversation is about documents
 
     const messagesEndRef = useRef<HTMLDivElement>(null); // Ref to scroll to the latest message
 
@@ -180,6 +181,42 @@ const ChatInterface: React.FC<{ onClose?: () => void, isVisible?: boolean }> = (
             messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
         }
     }, [messages, loading, isVisible]);
+
+    // Function to check if query is document-related
+    const isDocumentQuery = (query: string): boolean => {
+        const documentKeywords = [
+            'document', 'documents', 'file', 'files', 'pdf', 'doc', 'docx', 'search',
+            'find', 'locate', 'resume', 'paper', 'upload', 'uploaded', 'attachment',
+            'report', 'read', 'content', 'information in', 'data from'
+        ];
+
+        const lowerQuery = query.toLowerCase();
+        return documentKeywords.some(keyword => lowerQuery.includes(keyword));
+    };
+
+    // Function to handle document search
+    const handleDocumentSearch = async (query: string): Promise<any> => {
+        try {
+            const response = await fetch('/api/documents/search', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ query }),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json().catch(() => ({ details: "Unknown error with document search" }));
+                throw new Error(`Document search error: ${response.statusText}. Details: ${errorData.details || response.statusText}`);
+            }
+
+            return await response.json();
+        } catch (error) {
+            console.error('Document search error:', error);
+            return {
+                error: true,
+                message: "I encountered an issue when searching through documents. Please try again or refine your query."
+            };
+        }
+    };
 
     // Function to handle API call to the RAG backend
     const handleRagApiCall = async (userMessageContent: string, currentChatHistory: Message[]) => {
@@ -233,22 +270,77 @@ const ChatInterface: React.FC<{ onClose?: () => void, isVisible?: boolean }> = (
         setLoading(true); // Set loading state for typing indicator and disabling input
 
         try {
-            // Send all messages up to the current one as history
-            const historyToSend = updatedMessages;
+            let data;
 
-            const data = await handleRagApiCall(userMessageContent, historyToSend); // Call RAG API
+            // Check if this is a document-related query
+            if (isDocumentMode || isDocumentQuery(userMessageContent)) {
+                setIsDocumentMode(true);
 
-            // Create bot's response message object
-            const botMessage: Message = {
-                id: `bot-${Date.now()}`, type: 'bot',
-                content: data.message || "Sorry, I couldn't process that request at the moment.",
-                timestamp: new Date().toISOString(),
-                recommendations: data.recommendations, // If API returns recommendations
-                options: data.options, // If API returns quick reply options
-                confidence: data.metadata?.confidence // If API returns confidence score
-            };
-            setMessages(prev => [...prev, botMessage]); // Add bot's response to messages
+                // Call document search API
+                data = await handleDocumentSearch(userMessageContent);
 
+                if (!data.error && data.documents?.length > 0) {
+                    // Format response with document information
+                    let responseContent = data.enhancedResponse || '';
+
+                    if (!responseContent) {
+                        responseContent = `I found ${data.documents.length} documents that might answer your question:\n\n`;
+                        data.documents.forEach((doc: any, index: number) => {
+                            responseContent += `${index + 1}. **${doc.title}**\n`;
+                            if (doc.highlights?.content) {
+                                responseContent += `   Excerpt: ${doc.highlights.content[0]}\n\n`;
+                            }
+                        });
+                    }
+
+                    // Create bot response with document results
+                    const botMessage: Message = {
+                        id: `bot-${Date.now()}`,
+                        type: 'bot',
+                        content: responseContent,
+                        timestamp: new Date().toISOString(),
+                        documentResults: data.documents // Store document results
+                    };
+                    setMessages(prev => [...prev, botMessage]);
+                } else if (data.error) {
+                    // Handle document search error
+                    const botMessage: Message = {
+                        id: `bot-${Date.now()}`,
+                        type: 'bot',
+                        content: data.message || "I couldn't find any relevant documents for your query.",
+                        timestamp: new Date().toISOString()
+                    };
+                    setMessages(prev => [...prev, botMessage]);
+                } else {
+                    // No documents found, fall back to regular RAG
+                    data = await handleRagApiCall(userMessageContent, updatedMessages);
+
+                    const botMessage: Message = {
+                        id: `bot-${Date.now()}`,
+                        type: 'bot',
+                        content: data.message || "I couldn't find specific documents matching your query. Is there something else I can help with?",
+                        timestamp: new Date().toISOString(),
+                        recommendations: data.recommendations,
+                        options: data.options,
+                        confidence: data.metadata?.confidence
+                    };
+                    setMessages(prev => [...prev, botMessage]);
+                }
+            } else {
+                // Regular RAG flow (non-document query)
+                data = await handleRagApiCall(userMessageContent, updatedMessages);
+
+                const botMessage: Message = {
+                    id: `bot-${Date.now()}`,
+                    type: 'bot',
+                    content: data.message || "Sorry, I couldn't process that request at the moment.",
+                    timestamp: new Date().toISOString(),
+                    recommendations: data.recommendations,
+                    options: data.options,
+                    confidence: data.metadata?.confidence
+                };
+                setMessages(prev => [...prev, botMessage]);
+            }
         } catch (error) { // Catch errors from handleSubmit logic or API call
             console.error('Error in handleSubmit:', error);
             const errorBotMessage: Message = {
@@ -257,8 +349,9 @@ const ChatInterface: React.FC<{ onClose?: () => void, isVisible?: boolean }> = (
                 timestamp: new Date().toISOString()
             };
             setMessages(prev => [...prev, errorBotMessage]);
+        } finally {
+            setLoading(false); // Reset loading state
         }
-        setLoading(false); // Reset loading state
     };
 
     // Function to handle when a user selects a plan from recommendations
