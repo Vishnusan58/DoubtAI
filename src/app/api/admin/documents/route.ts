@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { AzureStorageService } from '@/services/storage/azure-storage';
+import { AzureStorageService } from '@/services/storage/azure-storage-fixed';
 
 export async function GET(req: NextRequest): Promise<NextResponse> {
   try {

@@ -20,7 +20,7 @@ export async function POST(req: Request) {
             metadata: {
                 timestamp: CURRENT_TIMESTAMP,
                 user: CURRENT_USER,
-                model: 'gemini-embedding-exp-03-07',
+                model: 'text-embedding-004',
                 type: isBatch ? 'batch' : 'single'
             }
         });

@@ -1,6 +1,6 @@
 // app/api/rag/route.ts
 import { NextResponse } from 'next/server';
-import { queryRAGSystem } from '@/utils/ragHelper'; // Adjust path if ragHelper.ts is elsewhere
+import { queryRAGSystem } from '@/utils/ragHelper-enhanced'; // Adjust path if ragHelper.ts is elsewhere
 // Assuming your Message type is in lib/types.ts
 
 export async function POST(request: Request) {
