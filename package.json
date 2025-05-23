@@ -14,6 +14,7 @@
     "dependencies": {
         "@azure/cosmos": "^4.0.0",
         "@azure/identity": "^3.0.0",
+        "@azure/search-documents": "^12.1.0",
         "@azure/storage-blob": "^12.0.0",
         "@google/generative-ai": "^0.21.0",
         "@huggingface/transformers": "^3.5.1",
@@ -35,9 +36,11 @@
         "react-icons": "^5.4.0",
         "redis": "^4.0.0",
         "sharp": "^0.32.6",
+        "tail": "^2.2.6",
         "tailwind-merge": "^2.6.0",
         "tailwindcss-animate": "^1.0.7",
-        "uuid": "^11.0.5"
+        "uuid": "^11.0.5",
+        "yargs": "^17.7.2"
     },
     "devDependencies": {
         "@eslint/eslintrc": "^3",
@@ -45,6 +48,7 @@
         "@types/react": "^19",
         "@types/react-dom": "^19",
         "@types/uuid": "^9.0.0",
+        "@types/yargs": "^17.0.33",
         "autoprefixer": "^10.4.20",
         "dotenv": "^16.5.0",
         "eslint": "^9",
