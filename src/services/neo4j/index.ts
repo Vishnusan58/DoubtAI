@@ -245,4 +245,31 @@ export class Neo4jService {
 
     return this.executeQuery(query, { documentId });
   }
+
+  /**
+   * Insert entity-relation triples into the graph database
+   * @param triples Array of [subject, relation, object] triples
+   * @returns The result of the Neo4j operation
+   */
+  public async insertTriples(triples: [string, string, string][]): Promise<Record[]> {
+    const session = this.getSession();
+    const results: Record[] = [];
+
+    try {
+      for (const [subj, rel, obj] of triples) {
+        const query = `
+          MERGE (a:Entity {name: $subj})
+          MERGE (b:Entity {name: $obj})
+          MERGE (a)-[r:REL {type: $rel}]->(b)
+          RETURN a, r, b
+        `;
+        const result = await session.run(query, { subj, rel, obj });
+        results.push(...result.records);
+      }
+      return results;
+    } finally {
+      await session.close();
+    }
+  }
 }
+
