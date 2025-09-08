@@ -1,36 +1,150 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DoubtAI: Document Processing & Question-Answering System
 
-## Getting Started
+## Project Overview
 
-First, run the development server:
+DoubtAI is an advanced document question-answering system that processes uploaded documents (primarily PDFs), generates embeddings, and uses LLM-based question-answering capabilities. The system leverages Retrieval Augmented Generation (RAG) to provide accurate answers based on document content.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Tech Stack
+
+### Frontend
+- **Next.js** - React framework for the application
+- **TypeScript/JavaScript** - Primary programming languages
+- **React** - UI component library
+
+### Backend & APIs
+- **Next.js API Routes** - Serverless API endpoints
+- **Node.js** - Runtime environment
+
+### AI & Machine Learning
+- **Google Gemini API** - For embeddings (`text-embedding-004`, `gemini-embedding-exp-03-07`) and text generation
+- **LangChain** - Utilities for document processing
+
+### Data Storage
+- **Pinecone** - Vector database for embeddings
+- **Azure Cosmos DB** - Document storage with MongoDB API
+- **Azure Storage** - For file storage
+- **Azure Redis Cache** - Optional caching layer
+
+### Document Processing
+- **PDFLoader** (LangChain) - PDF text extraction
+- **RecursiveCharacterTextSplitter** - Text chunking functionality
+
+## System Architecture
+
+DoubtAI follows a modular architecture with these key components:
+
+```
+┌────────────────┐     ┌─────────────────┐     ┌────────────────────┐
+│   Frontend     │────►│  API Layer      │────►│  Document Processor │
+└────────────────┘     └─────────────────┘     └────────────────────┘
+                             │                          │
+                             ▼                          ▼
+                       ┌─────────────┐         ┌────────────────┐
+                       │  RAG Engine │◄────────┤ Embedding Gen. │
+                       └─────────────┘         └────────────────┘
+                             │                          │
+                             ▼                          ▼
+                     ┌───────────────┐         ┌───────────────────┐
+                     │ LLM Interface │         │ Vector DB Storage │
+                     └───────────────┘         └───────────────────┘
+                             │                          │
+                             └──────────────────────────┘
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Data Flow
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Document Upload & Processing Flow
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Document Upload**
+    - User uploads PDF through frontend
+    - File stored in Cosmos DB with metadata (without embeddings initially)
 
-## Learn More
+2. **Text Extraction & Chunking**
+    - PDF content extracted using PDFLoader
+    - Text split into manageable chunks
+    - Example: `Document split into 3 chunks`
 
-To learn more about Next.js, take a look at the following resources:
+3. **Embedding Generation**
+    - Each text chunk sent to Gemini embedding model
+    - Embeddings generated (vector representations of text)
+    - Example: `Generating embedding for text using model text-embedding-004`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. **Vector Storage**
+    - Embeddings stored in Pinecone vector database
+    - Each chunk indexed with its vector representation
+    - Example: `Successfully stored 3 chunks in Pinecone`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Question-Answering Flow
 
-## Deploy on Vercel
+1. **User Query**
+    - User submits question through the frontend
+    - Query sent to RAG system
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2. **Context Retrieval**
+    - Query converted to embedding
+    - Similar vectors retrieved from Pinecone
+    - Most relevant document chunks selected
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3. **Response Generation**
+    - Retrieved context combined with user query
+    - Sent to Gemini LLM for answer generation
+    - Formatted response returned to user
+
+## Key Components
+
+### Document Embedding Service
+
+Handles document processing and embedding generation:
+
+- Extracts text from PDFs
+- Chunks text into manageable pieces
+- Generates embeddings using Gemini models
+- Stores vectors in Pinecone or Azure AI Search
+
+### RAG Helper
+
+Provides retrieval augmented generation capabilities:
+
+- Formats chat history for Gemini
+- Generates responses using document context
+- Handles error cases and fallbacks
+
+## Implementation Details
+
+### Document Processing Pipeline
+
+```
+Upload → Cosmos DB Storage → Text Extraction → Chunking → 
+Embedding Generation → Vector Storage → Response Generation
+```
+
+### Configuration
+
+Environment variables required:
+- `GOOGLE_API_KEY`: For Gemini API access
+- `PINECONE_API_KEY`: For vector database access
+- Various Azure connection strings (for Cosmos DB, Redis, etc.)
+
+## Setup & Troubleshooting
+
+### Common Issues
+
+1. **404 Pinecone Index Error**
+    - Error: `PineconeNotFoundError: A call to https://api.pinecone.io/indexes/healthdoc returned HTTP status 404`
+    - Solution: Create the required index in Pinecone console with matching name and dimensions
+
+2. **API Key Configuration Issues**
+    - Error: `GEMINI_API_KEY is not configured or is using a placeholder`
+    - Solution: Set proper API keys in environment variables
+
+3. **PDF Processing Errors**
+    - Solution: Check file formats and ensure proper access permissions
+
+### Success Indicators
+
+```
+Successfully stored 3 chunks in Pinecone
+Successfully processed PDF with 3 chunks
+```
+
+The system is successfully extracting text, generating embeddings with Gemini models, and storing them in Pinecone for retrieval during question answering.
